@@ -1,0 +1,295 @@
+// 颜色变量
+/**
+ * HJ的Chrome拓展样式文件
+ * 包含所有UI组件的样式定义
+ */
+
+// 颜色变量 - 主题色
+// 颜色变量 - 主题色
+@primary-color: #4285f4;         // 主色调 - 蓝色
+@primary-hover: #3367d6;         // 主色调悬停状态
+
+// 颜色变量 - 功能色
+@success-color: #34a853;         // 成功色 - 绿色
+@success-hover: #2d9249;         // 成功色悬停状态
+@error-color: #ea4335;           // 错误色 - 红色
+@error-hover: #d33527;           // 错误色悬停状态
+
+// 颜色变量 - 文本色
+@text-color: #333;               // 主要文本色
+@text-secondary: #666;           // 次要文本色
+
+// 颜色变量 - 背景色
+@border-color: #ddd;             // 边框颜色
+@background-color: #f5f5f5;      // 页面背景色
+@card-background: white;         // 卡片背景色
+@code-background: #f9f9f9;       // 代码块背景色
+
+// 阴影效果
+@shadow: 0 1px 3px rgba(0,0,0,0.1);            // 普通阴影
+@notification-shadow: 0 2px 10px rgba(0,0,0,0.2);  // 通知阴影
+
+// 字体变量
+@font-main: 'Arial', sans-serif;       // 主要字体
+@font-code: 'Courier New', monospace;  // 代码字体
+@font-size-base: 14px;                 // 基础字体大小
+@font-size-heading: 22px;              // 标题字体大小
+@font-size-subheading: 16px;           // 副标题字体大小
+
+// 间距变量
+@spacing-xs: 5px;   // 极小间距
+@spacing-sm: 8px;   // 小间距
+@spacing-md: 10px;  // 中等间距
+@spacing-lg: 15px;  // 大间距
+@spacing-xl: 20px;  // 极大间距
+
+// 混合
+.border-radius(@radius: 4px) {
+  border-radius: @radius;
+}
+
+// JSON视图容器样式
+.json-view-container {
+  margin-top: @spacing-md;
+  padding: @spacing-md;
+  background-color: @code-background;
+  .border-radius();
+  border: 1px solid @border-color;
+  overflow: auto;
+  max-height: 200px;
+
+  h3 {
+    margin-bottom: @spacing-xs;
+    font-size: @font-size-subheading;
+    color: @text-color;
+  }
+
+  // 确保ReactJson组件填满容器
+  > div {
+    width: 100%;
+    height: calc(100% - 30px);
+  }
+
+  // 错误消息样式
+  .error-message {
+    color: @error-color;
+    padding: @spacing-sm;
+    background-color: rgba(234, 67, 53, 0.1);
+    border-left: 3px solid @error-color;
+    .border-radius();
+    margin-top: @spacing-xs;
+  }
+}
+
+.box-shadow(@shadow: @shadow) {
+  box-shadow: @shadow;
+}
+
+.transition(@property: background-color, @duration: 0.2s) {
+  transition: @property @duration;
+}
+
+// 基础样式
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: @font-main;
+}
+
+.body-class {
+  width: 500px;
+  height: 600px;
+  padding: @spacing-lg;
+  background-color: @background-color;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+// 标题样式
+.title-h1 {
+  text-align: center;
+  color: @text-color;
+  margin-bottom: @spacing-xs;
+  font-size: @font-size-heading;
+}
+
+.paragraph {
+  text-align: center;
+  color: @text-secondary;
+  margin-bottom: @spacing-lg;
+  font-size: @font-size-base;
+}
+
+// 区块样式
+.section {
+  background-color: @card-background;
+  .border-radius(8px);
+  padding: @spacing-lg;
+  margin-bottom: @spacing-lg;
+  .box-shadow();
+
+  .section-title {
+    font-size: @font-size-subheading;
+    color: @text-color;
+    margin-bottom: @spacing-md;
+    padding-bottom: @spacing-xs;
+    border-bottom: 1px solid #eee;
+  }
+
+  .section-subtitle {
+    font-size: @font-size-base + 2px;
+    color: @text-color;
+    margin: @spacing-md 0;
+  }
+}
+
+// 表单元素样式
+.textarea-class {
+  width: 100%;
+  height: 120px;
+  padding: @spacing-md;
+  margin-bottom: @spacing-md;
+  border: 1px solid @border-color;
+  .border-radius();
+  font-family: @font-code;
+  font-size: @font-size-base;
+  resize: vertical;
+}
+
+.pre-class {
+  width: 100%;
+  height: 150px;
+  padding: @spacing-md;
+  background-color: @code-background;
+  border: 1px solid @border-color;
+  .border-radius();
+  overflow: auto;
+  font-family: @font-code;
+  font-size: @font-size-base;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+.button-class {
+  padding: @spacing-xs @spacing-md;
+  background-color: @primary-color;
+  color: white;
+  border: none;
+  .border-radius();
+  cursor: pointer;
+  .transition();
+  font-size: @font-size-base;
+
+  &:hover {
+    background-color: @primary-hover;
+  }
+
+  &:active {
+    transform: translateY(1px);
+  }
+}
+
+// Tab样式
+.tabs {
+  display: flex;
+  margin-bottom: @spacing-md;
+  border-bottom: 1px solid @border-color;
+}
+
+.tab-button {
+  padding: @spacing-sm @spacing-lg;
+  background-color: transparent;
+  color: @text-secondary;
+  border: none;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+  .transition();
+  font-size: @font-size-base;
+
+  &:hover {
+    color: @primary-color;
+  }
+
+  &.active {
+    color: @primary-color;
+    border-bottom-color: @primary-color;
+    font-weight: bold;
+  }
+}
+
+.tab-content {
+  flex-grow: 1;
+  overflow: auto;
+}
+
+.mock-result {
+  margin-bottom: @spacing-md;
+}
+
+.copy-btn {
+  background-color: @success-color;
+  margin-left: @spacing-sm;
+
+  &:hover {
+    background-color: @success-hover;
+  }
+}
+
+.mock-btn {
+  background-color: @primary-color;
+
+  &:hover {
+    background-color: @primary-hover;
+  }
+}
+
+// 选项区域样式
+.mock-options {
+  margin-bottom: @spacing-lg;
+  display: flex;
+  flex-direction: column;
+  gap: @spacing-sm;
+}
+
+.option {
+  display: flex;
+  align-items: center;
+}
+
+input[type="checkbox"] {
+  margin-right: @spacing-sm;
+}
+
+input[type="number"] {
+  width: 60px;
+  padding: 5px;
+  margin-left: 5px;
+  border: 1px solid @border-color;
+  .border-radius();
+}
+
+// 通知样式
+.notification {
+  position: fixed;
+  bottom: @spacing-xl;
+  right: @spacing-xl;
+  padding: @spacing-md @spacing-xl;
+  .border-radius();
+  color: white;
+  font-size: @font-size-base;
+  z-index: 1000;
+  .box-shadow(@notification-shadow);
+}
+
+.success {
+  background-color: @success-color;
+}
+
+.error {
+  background-color: @error-color;
+}

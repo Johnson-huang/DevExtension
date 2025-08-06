@@ -1,0 +1,37 @@
+{
+  "name": "hj-chrome-extension",
+  "version": "1.0.0",
+  "description": "HJ的Chrome拓展 - 提供JSON数据格式化、复制和微信小程序mock数据生成功能",
+  "scripts": {
+    "start": "react-app-rewired start",
+    "build": "npm run update-readme && react-app-rewired build && npm run generate-popup",
+    "generate-popup": "node scripts/generate-popup.js",
+    "test": "react-app-rewired test",
+    "eject": "react-scripts eject",
+    "update-readme": "node scripts/update-readme.js"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-json-view": "^1.21.3",
+    "react-scripts": "5.0.1"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "customize-cra": "^1.0.0",
+    "less": "^4.4.0",
+    "less-loader": "^12.3.0",
+    "react-app-rewired": "^2.2.1"
+  }
+}
