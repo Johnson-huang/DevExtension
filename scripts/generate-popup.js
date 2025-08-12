@@ -19,9 +19,9 @@ const manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf8'));
 const cssPath = manifest.files['main.css'];
 const jsPath = manifest.files['main.js'];
 
-// 确保路径以./build/开头
-const normalizedCssPath = cssPath.startsWith('/') ? './build' + cssPath : './build/' + cssPath;
-const normalizedJsPath = jsPath.startsWith('/') ? './build' + jsPath : './build/' + jsPath;
+// 确保路径正确
+const normalizedCssPath = cssPath.startsWith('/') ? '.' + cssPath : cssPath;
+const normalizedJsPath = jsPath.startsWith('/') ? '.' + jsPath : jsPath;
 
 // HTML模板
 const htmlTemplate = `<!DOCTYPE html>
